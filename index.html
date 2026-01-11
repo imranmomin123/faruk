@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<title>डिजिटल ई-मतदान यंत्र</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f2f2f2;
+}
+
+.header{
+  background:#0aa34f;
+  color:white;
+  padding:15px;
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.container{
+  width:95%;
+  margin:20px auto;
+  background:white;
+  border-radius:10px;
+  padding:15px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th{
+  background:#0aa34f;
+  color:white;
+  padding:10px;
+}
+
+td{
+  border:1px solid #ccc;
+  padding:8px;
+  text-align:center;
+}
+
+.section-title td{
+  background:#ffe6ec;
+  font-weight:bold;
+  text-align:center;
+}
+
+.vote-btn{
+  background:#0b3b91;
+  color:white;
+  border:none;
+  padding:8px 20px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.vote-btn:disabled{
+  background:gray;
+  cursor:not-allowed;
+}
+
+/* LIGHT */
+.light{
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:#ccc;
+  margin:auto;
+}
+
+.light.on{
+  background:red;
+  box-shadow:0 0 10px red;
+}
+
+/* IMAGES */
+.symbol-img{
+  width:40px;
+}
+
+.candidate-img{
+  width:55px;
+  border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+सांगली मिराज आणि कुपवाड शहर महानगरपालिका सार्वत्रिक निवडणूक २०२६<br>
+डिजिटल ई-मतदान यंत्र
+</div>
+
+<div class="container">
+
+<table>
+
+<tr>
+  <th>क्र.</th>
+  <th>उमेदवार</th>
+  <th>चिन्ह</th>
+  <th>फोटो</th>
+  <th>लाईट</th>
+  <th>मतदान</th>
+</tr>
+
+<!-- ५ (अ) - ना.मा.प्र.स्त्री -->
+<tr class="section-title"><td colspan="6">५ (अ) - ना.मा.प्र.स्त्री</td></tr>
+
+<tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
+
+<!-- ५ (ब) गट (सर्व साधारण महिला) -->
+<tr class="section-title"><td colspan="6">५ (ब) गट (सर्व साधारण महिला)</td></tr>
+
+<tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+
+<!-- क्रमांक 6 - उमेदवार -->
+<tr>
+  <td><b>6</b></td>
+  <td style="text-align:left;">कगमरी महेरून हसन</td>
+  <td><img src="chinh.png" class="symbol-img"></td>
+  <td><img src="umedwar.jpg" class="candidate-img"></td>
+  <td><div id="light1" class="light"></div></td>
+  <td>
+    <button id="btn1" class="vote-btn" onclick="voteNow()">
+      मतदान करा
+    </button>
+  </td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- AUDIO -->
+<audio id="voteAudio" src="audio/vote.mp3"></audio>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  let votedThisPage = false;
+
+  window.voteNow = function () {
+
+    if (votedThisPage) return;
+
+    // red light ON
+    document.getElementById("light1").classList.add("on");
+
+    // play audio
+    var audio = document.getElementById("voteAudio");
+    audio.currentTime = 0;
+    audio.play();
+
+    // disable button
+    document.getElementById("btn1").disabled = true;
+
+    votedThisPage = true;
+  };
+
+});
+</script>
+
+</body>
+</html>
